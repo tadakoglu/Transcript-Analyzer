@@ -1,0 +1,74 @@
+<section class="content customScrollBar" *ngIf="filteredTranscript$ | async as call; else loading">
+  <div class="card ">
+    <h1>
+      <span class="titleLeft">Real</span>
+      <span class="titleRight">Alignment to the expected script: {{panel1Title$ | async}}%</span>
+    </h1>
+   
+    <table>
+      <thead>
+        <tr>
+          <td><b>Time From </b></td>
+          <td><b>Time To </b></td>
+          <td><b>Speaker</b></td>
+          <td><b>Sentence</b></td>
+        </tr>
+      </thead>
+      <tbody >
+        <tr *ngFor="let transcript of call.transcript">
+        
+          <td>{{transcript.timeFrom}}</td>
+          <td>{{transcript.timeTo}}</td>
+          <td>{{ call.customer.full_name }}</td>
+          <td
+            matTooltip="{{transcript.similarity}} matching with line  {{transcript.matching_sentence}}">
+            {{ transcript.sentence }}
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h1>
+      <span class="titleLeft">Expected</span>
+      <span class="titleRight">Percent of script covered: {{(panel2Title$ | async)}}%</span>
+    </h1>
+    <table>
+      <thead>
+        <tr>
+          <td><b>Line</b></td>
+          <td><b>Speaker</b></td>
+          <td><b>Sentence</b></td>
+        </tr>
+      </thead>
+      <tbody >
+        <tr *ngFor="let script of call.script">
+          <td>{{ script.order }}</td>
+          <td>Rep:</td>
+          
+
+          <td
+          matTooltip="{{script.similarity}} matching with line #{{script.matching_line}} {{script.matching_sentence}}">
+          {{ script.sentence }}
+
+        
+        </td>
+
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<ng-template #loading>
+  <div class="empty-state">
+    <div class="loadingRegion">
+      <img src="/assets/img/loading.png" class="loadingImg">
+      <h3>Selection pending</h3>
+      <p>Select a call from top menu and a transcript analysis will be shown here.</p>
+    </div>
+  </div>
+</ng-template>

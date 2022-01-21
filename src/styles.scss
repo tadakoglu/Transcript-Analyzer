@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: Roboto, sans-serif;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+/* width */
+.customScrollBar ::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+.customScrollBar  ::-webkit-scrollbar-track {
+  background: #ffffff; 
+    
+}
+ 
+/* Handle */
+.customScrollBar  ::-webkit-scrollbar-thumb {
+  background: #C4C4C4; 
+    border-radius: 2px;
+}
+
+/* Handle on hover */
+.customScrollBar  ::-webkit-scrollbar-thumb:hover {
+  background: #414040; 
+}
+
+
+.mat-slider-thumb {
+	background-color: #5A5A71 !important;
+}
+
+
+.mat-slider-thumb-label {
+	background-color: #AAAAAA !important;
+}
+
+.mat-slider-track-fill {
+	background-color: #AAAAAA !important;
+}

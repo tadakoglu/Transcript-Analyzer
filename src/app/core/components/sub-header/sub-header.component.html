@@ -1,0 +1,50 @@
+<ng-container *ngTemplateOutlet="subHeader">
+  This text is not displayed
+</ng-container>
+
+
+<ng-template #subHeader>
+  <div class="flex">
+    <div class="selects">
+
+      <mat-form-field appearance="fill">
+
+        <mat-label class="agentLabelContainer">
+          <span>
+            <mat-icon>call</mat-icon>
+          </span>
+          <span>Agent</span>
+        </mat-label>
+        <mat-select (selectionChange)="setAgent($event)" id="agent" name="agent">
+          <mat-option [value]="undefined"></mat-option>
+          <mat-option *ngFor="let agent of agents.agents$ | async" [value]="agent.agent_id">
+            {{agent.full_name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+      <mat-form-field appearance="fill" class="callSelectMatForm">
+        <mat-label for="call" class="callLabelContainer">
+          <span>
+            <mat-icon>group</mat-icon>
+          </span>
+          <span>Call</span>
+        </mat-label>
+        <mat-select #callTemplateRef [disabled]="(activeAgent | async) ? false: true "
+          (selectionChange)="setCall($event)" id="call" name="call">
+          <mat-option [value]="undefined"></mat-option>
+          <mat-option *ngFor="let call of calls.activeAgentCalls$ | async" [value]="call.call_id">
+            {{call.call_start_time|date:'short'}} - {{call.customer?.full_name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="matcher">
+      MATCHING SENSITIVITY
+      <mat-slider #matcher (change)="setMatchingPercentage($event)" min="1" max="100"
+        [value]="matchingPercentage | async"></mat-slider>
+      <span>{{matcher.value}}%</span>
+    </div>
+  </div>
+</ng-template>
