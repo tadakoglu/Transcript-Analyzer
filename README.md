@@ -4,6 +4,9 @@
 ![alt text](https://github.com/tadakoglu/Transcript-Analyzer/blob/main/ss1.png)
 ![alt text](https://github.com/tadakoglu/Transcript-Analyzer/blob/main/ss2.png)
 
+# TranscriptAnalyzer Video Presentation
+https://www.loom.com/share/dd3e99ede1df4b34ac15cbdd50ca3d1b
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2.
 
 ## Development server
